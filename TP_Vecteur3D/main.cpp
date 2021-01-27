@@ -1,8 +1,9 @@
 #include "Vecteur_3D.h"
+#include "Vecteur_2D.h"
 
 int main()
 {
-	Vecteur_3D<float> V1(1.14f, 2.3f, 3.f), V2(4.54f, 5.11f, 6.2f);
+	// Vecteur_3D<float> V1(1.14f, 2.3f, 3.f), V2(4.54f, 5.11f, 6.2f);
 
 	/*V1.affiche();
 	cout << endl << endl;
@@ -47,10 +48,56 @@ int main()
 	cout << endl << endl;*/
 
 
+	/*cout << V1 << endl << endl;
+	cout << V2 << endl << endl;
+
+	if (V1 == V2)
+	{
+		cout << "TRUE" << endl << endl;
+	}
+	else {
+		cout << "FALSE" << endl << endl;
+	}
+
+	Vecteur_3D<float> V3;
+	V3 = V1 + V2;
+
+	cout << "Addition :" << endl;
+	cout << V3 << endl << endl;
+
+	V3 = V1 - V2;
+
+	cout << "Soustraction :" << endl;
+	cout << V3 << endl << endl;
+
+	V3 = V1 * 10.f;
+
+	cout << "Multiplication par un scalaire :" << endl;
+	cout << V3 << endl << endl;
+
+	cout << "Produit scalaire :" << endl;
+	cout << V1 * V2 << endl << endl;
+
+	V3 = V1 ^ V2;
+
+	cout << "Produit vectoriel :" << endl;
+	cout << V3 << endl << endl;*/
+
+
+	Vecteur_2D<float> V1(1.14f, 2.3f), V2(4.54f, 5.11f);
+
 	cout << V1 << endl << endl;
 	cout << V2 << endl << endl;
 
-	Vecteur_3D<float> V3;
+	if (V1 == V2)
+	{
+		cout << "TRUE" << endl << endl;
+	}
+	else {
+		cout << "FALSE" << endl << endl;
+	}
+
+	Vecteur_2D<float> V3;
 	V3 = V1 + V2;
 
 	cout << "Addition :" << endl;

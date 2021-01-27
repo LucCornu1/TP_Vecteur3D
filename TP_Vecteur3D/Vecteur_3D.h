@@ -5,7 +5,7 @@ using namespace std;
 
 template <class T> class Vecteur_3D
 {
-private:
+protected:
 	T m_tX;
 	T m_tY;
 	T m_tZ;
@@ -22,40 +22,42 @@ public:
 
 
 	// Fonctions membres
-	Vecteur_3D addition(Vecteur_3D);
+	Vecteur_3D addition(const Vecteur_3D);
 
-	Vecteur_3D soustraction(Vecteur_3D);
+	Vecteur_3D soustraction(const Vecteur_3D);
 
-	Vecteur_3D multiplication_scalaire(T scalaire);
+	Vecteur_3D multiplication_scalaire(const T scalaire);
 
-	T produit_scalaire(Vecteur_3D);
+	T produit_scalaire(const Vecteur_3D);
 
-	Vecteur_3D produit_vectoriel(Vecteur_3D);
+	Vecteur_3D produit_vectoriel(const Vecteur_3D);
 
 	void affiche();
 
 
 	// Surcharge operator
-	void operator=(Vecteur_3D);
+	void operator=(const Vecteur_3D);
 
-	Vecteur_3D operator+(Vecteur_3D);
+	bool operator==(const Vecteur_3D);
 
-	Vecteur_3D operator-(Vecteur_3D);
+	Vecteur_3D operator+(const Vecteur_3D);
 
-	Vecteur_3D operator*(T scalaire);
+	Vecteur_3D operator-(const Vecteur_3D);
 
-	T operator*(Vecteur_3D);
+	Vecteur_3D operator*(const T scalaire);
 
-	Vecteur_3D operator^(Vecteur_3D);
+	T operator*(const Vecteur_3D);
+
+	Vecteur_3D operator^(const Vecteur_3D);
 
 
 	// Fonctions amies
-	friend bool coincide(Vecteur_3D V, Vecteur_3D W)
+	friend bool coincide(const Vecteur_3D V, const Vecteur_3D W)
 	{
 		return V.m_tX == W.m_tX && V.m_tY == W.m_tY && V.m_tZ == W.m_tZ;
 	}
 
-	friend ostream& operator<<(ostream& os, Vecteur_3D& vect)
+	friend ostream& operator<<(ostream& os, const Vecteur_3D& vect)
 	{
 		os << "X : " << vect.m_tX << ", Y : " << vect.m_tY << ", Z : " << vect.m_tZ;
 		return os;
@@ -87,7 +89,7 @@ template <class T> inline Vecteur_3D<T>::~Vecteur_3D()
 
 
 // Fonctions membres
-template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::addition(Vecteur_3D vect)
+template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::addition(const Vecteur_3D vect)
 {
 	Vecteur_3D<T> V;
 
@@ -98,7 +100,7 @@ template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::addition(Vecteur_3D vect)
 	return V;
 }
 
-template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::soustraction(Vecteur_3D vect)
+template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::soustraction(const Vecteur_3D vect)
 {
 	Vecteur_3D<T> V;
 
@@ -109,7 +111,7 @@ template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::soustraction(Vecteur_3D v
 	return V;
 }
 
-template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::multiplication_scalaire(T t_Sca)
+template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::multiplication_scalaire(const T t_Sca)
 {
 	Vecteur_3D<T> V;
 
@@ -120,12 +122,12 @@ template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::multiplication_scalaire(T
 	return V;
 }
 
-template <class T> inline T Vecteur_3D<T>::produit_scalaire(Vecteur_3D vect)
+template <class T> inline T Vecteur_3D<T>::produit_scalaire(const Vecteur_3D vect)
 {
 	return this->m_tX * vect.m_tX + this->m_tY * vect.m_tY + this->m_tZ * vect.m_tZ;
 }
 
-template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::produit_vectoriel(Vecteur_3D vect)
+template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::produit_vectoriel(const Vecteur_3D vect)
 {
 	Vecteur_3D<T> V;
 
@@ -143,14 +145,19 @@ template <class T> inline void Vecteur_3D<T>::affiche()
 
 
 // Surcharge operator
-template <class T> inline void Vecteur_3D<T>::operator=(Vecteur_3D vect)
+template <class T> inline void Vecteur_3D<T>::operator=(const Vecteur_3D vect)
 {
 	this->m_tX = vect.m_tX;
 	this->m_tY = vect.m_tY;
 	this->m_tZ = vect.m_tZ;
 }
 
-template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::operator+(Vecteur_3D vect)
+template <class T> inline bool Vecteur_3D<T>::operator==(const Vecteur_3D vect)
+{
+	return this->m_tX == vect.m_tX && this->m_tY == vect.m_tY && this->m_tZ == vect.m_tZ;
+}
+
+template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::operator+(const Vecteur_3D vect)
 {
 	Vecteur_3D<T> V;
 
@@ -161,7 +168,7 @@ template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::operator+(Vecteur_3D vect
 	return V;
 }
 
-template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::operator-(Vecteur_3D vect)
+template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::operator-(const Vecteur_3D vect)
 {
 	Vecteur_3D<T> V;
 
@@ -172,7 +179,7 @@ template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::operator-(Vecteur_3D vect
 	return V;
 }
 
-template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::operator*(T t_Sca)
+template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::operator*(const T t_Sca)
 {
 	Vecteur_3D<T> V;
 
@@ -183,12 +190,12 @@ template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::operator*(T t_Sca)
 	return V;
 }
 
-template <class T> inline T Vecteur_3D<T>::operator*(Vecteur_3D vect)
+template <class T> inline T Vecteur_3D<T>::operator*(const Vecteur_3D vect)
 {
 	return this->m_tX * vect.m_tX + this->m_tY * vect.m_tY + this->m_tZ * vect.m_tZ;
 }
 
-template<class T> inline Vecteur_3D<T> Vecteur_3D<T>::operator^(Vecteur_3D vect)
+template<class T> inline Vecteur_3D<T> Vecteur_3D<T>::operator^(const Vecteur_3D vect)
 {
 	Vecteur_3D<T> V;
 
