@@ -32,6 +32,19 @@ public:
 	T operator*(const Vecteur_2D);
 
 	Vecteur_2D operator^(const Vecteur_2D);
+
+
+	// Fonctions amies
+	friend bool coincide(const Vecteur_2D V, const Vecteur_2D W)
+	{
+		return V.m_tX == W.m_tX && V.m_tZ == W.m_tZ;
+	}
+
+	friend ostream& operator<<(ostream& os, const Vecteur_2D& vect)
+	{
+		os << "X : " << vect.m_tX << ", Y : " << vect.m_tY << ", Z : " << vect.m_tZ;
+		return os;
+	}
 };
 
 
@@ -44,7 +57,8 @@ template <class T> inline Vecteur_2D<T>::Vecteur_2D(T tX, T tZ) : Vecteur_3D<T>(
 // Constructeur par copie
 template <class T> inline Vecteur_2D<T>::Vecteur_2D(const Vecteur_2D& vect)
 {
-	// Construction du vecteur 2D
+	this->m_tX = vect.m_tX;
+	this->m_tZ = vect.m_tZ;
 }
 
 // Destructeur
@@ -111,11 +125,10 @@ template <class T> inline T Vecteur_2D<T>::operator*(const Vecteur_2D vect)
 
 template <class T> inline Vecteur_2D<T> Vecteur_2D<T>::operator^(const Vecteur_2D vect)
 {
-	/*Vecteur_2D<T> V;
+	Vecteur_2D<T> V;
 
 	V.m_tX = this->m_tY * vect.m_tZ - this->m_tZ * vect.m_tY;
 	V.m_tZ = this->m_tX * vect.m_tY - this->m_tY * vect.m_tX;
 
-	return V;*/
-	return vect;
+	return V;
 }
