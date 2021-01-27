@@ -26,7 +26,7 @@ public:
 
 	Vecteur_3D soustraction(Vecteur_3D);
 
-	Vecteur_3D multiplication_scalaire(T sca);
+	Vecteur_3D multiplication_scalaire(T scalaire);
 
 	T produit_scalaire(Vecteur_3D);
 
@@ -35,10 +35,30 @@ public:
 	void affiche();
 
 
+	// Surcharge operator
+	void operator=(Vecteur_3D);
+
+	Vecteur_3D operator+(Vecteur_3D);
+
+	Vecteur_3D operator-(Vecteur_3D);
+
+	Vecteur_3D operator*(T scalaire);
+
+	T operator*(Vecteur_3D);
+
+	Vecteur_3D operator^(Vecteur_3D);
+
+
 	// Fonctions amies
 	friend bool coincide(Vecteur_3D V, Vecteur_3D W)
 	{
 		return V.m_tX == W.m_tX && V.m_tY == W.m_tY && V.m_tZ == W.m_tZ;
+	}
+
+	friend ostream& operator<<(ostream& os, Vecteur_3D& vect)
+	{
+		os << "X : " << vect.m_tX << ", Y : " << vect.m_tY << ", Z : " << vect.m_tZ;
+		return os;
 	}
 };
 
@@ -119,4 +139,62 @@ template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::produit_vectoriel(Vecteur
 template <class T> inline void Vecteur_3D<T>::affiche()
 {
 	cout << "X : " << this->m_tX << ", Y : " << this->m_tY << ", Z : " << this->m_tZ;
+}
+
+
+// Surcharge operator
+template <class T> inline void Vecteur_3D<T>::operator=(Vecteur_3D vect)
+{
+	this->m_tX = vect.m_tX;
+	this->m_tY = vect.m_tY;
+	this->m_tZ = vect.m_tZ;
+}
+
+template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::operator+(Vecteur_3D vect)
+{
+	Vecteur_3D<T> V;
+
+	V.m_tX = this->m_tX + vect.m_tX;
+	V.m_tY = this->m_tY + vect.m_tY;
+	V.m_tZ = this->m_tZ + vect.m_tZ;
+
+	return V;
+}
+
+template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::operator-(Vecteur_3D vect)
+{
+	Vecteur_3D<T> V;
+
+	V.m_tX = this->m_tX - vect.m_tX;
+	V.m_tY = this->m_tY - vect.m_tY;
+	V.m_tZ = this->m_tZ - vect.m_tZ;
+
+	return V;
+}
+
+template <class T> inline Vecteur_3D<T> Vecteur_3D<T>::operator*(T t_Sca)
+{
+	Vecteur_3D<T> V;
+
+	V.m_tX = this->m_tX * t_Sca;
+	V.m_tY = this->m_tY * t_Sca;
+	V.m_tZ = this->m_tZ * t_Sca;
+
+	return V;
+}
+
+template <class T> inline T Vecteur_3D<T>::operator*(Vecteur_3D vect)
+{
+	return this->m_tX * vect.m_tX + this->m_tY * vect.m_tY + this->m_tZ * vect.m_tZ;
+}
+
+template<class T> inline Vecteur_3D<T> Vecteur_3D<T>::operator^(Vecteur_3D vect)
+{
+	Vecteur_3D<T> V;
+
+	V.m_tX = this->m_tY * vect.m_tZ - this->m_tZ * vect.m_tY;
+	V.m_tY = this->m_tZ * vect.m_tX - this->m_tX * vect.m_tZ;
+	V.m_tZ = this->m_tX * vect.m_tY - this->m_tY * vect.m_tX;
+
+	return V;
 }
