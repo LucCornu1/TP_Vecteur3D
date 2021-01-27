@@ -1,10 +1,11 @@
 #include "Vecteur_3D.h"
 #include "Vecteur_2D.h"
+#include "Conteneur_Vecteur.h"
 
 int main()
 {
 	// Travail 1 version 1
-	cout << "Travail 1 version 1 :" << endl << endl;
+	/*cout << "Travail 1 version 1 :" << endl << endl;
 
 
 	Vecteur_3D<float> V1(1.14f, 2.3f, 3.f), V2(4.54f, 5.11f, 6.2f);
@@ -147,5 +148,33 @@ int main()
 	V5 = V10 ^ V11;
 
 	cout << "Produit vectoriel :" << endl;
-	cout << V5 << endl << endl;
+	cout << V5 << endl << endl;*/
+
+
+
+
+	// Travail 3
+
+
+	Vecteur_3D<float> V01(1.14f, 2.3f, 3.f), V02(4.54f, 5.11f, 6.2f), V03(2.39f, 15.f, 7.3f);
+
+	Vecteur_2D<float> V001(1.14f, 2.3f), V002(4.54f, 6.2f), V003(15.f, 7.3f);
+
+
+	Conteneur_Vecteur<Vecteur_3D<float>, 3> tab3D;
+
+	tab3D[0] = V01;
+	tab3D[1] = V02;
+	tab3D[2] = V03;
+
+	cout << tab3D << endl << endl;
+
+
+	Conteneur_Vecteur<Vecteur_2D<float>, 3> tab2D;
+
+	tab2D[0] = V001;
+	tab2D[1] = V002;
+	tab2D[2] = V003;
+
+	cout << tab2D << endl << endl;
 }

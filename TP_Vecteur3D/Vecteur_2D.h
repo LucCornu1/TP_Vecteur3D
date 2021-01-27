@@ -19,7 +19,7 @@ public:
 
 
 	// Surcharge operator
-	void operator=(const Vecteur_2D);
+	Vecteur_2D operator=(const Vecteur_2D);
 
 	bool operator==(const Vecteur_2D);
 
@@ -76,10 +76,11 @@ template <class T> inline void Vecteur_2D<T>::affiche()
 
 
 // Surcharge operator
-template <class T> inline void Vecteur_2D<T>::operator=(const Vecteur_2D vect)
+template <class T> inline Vecteur_2D<T> Vecteur_2D<T>::operator=(const Vecteur_2D vect)
 {
 	this->m_tX = vect.m_tX;
 	this->m_tZ = vect.m_tZ;
+	return *this;
 }
 
 
