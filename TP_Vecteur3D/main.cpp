@@ -5,7 +5,7 @@
 int main()
 {
 	// Travail 1 version 1
-	/*cout << "Travail 1 version 1 :" << endl << endl;
+	cout << "Travail 1 version 1 :" << endl << endl;
 
 
 	Vecteur_3D<float> V1(1.14f, 2.3f, 3.f), V2(4.54f, 5.11f, 6.2f);
@@ -102,7 +102,7 @@ int main()
 	cout << "Travail 2 :" << endl << endl;
 
 
-	Vecteur_2D<float> V10(1.14f, 2.3f), V11(1.14f, 2.3f);
+	Vecteur_2D<int> V10(10, 2), V11(10, 2);
 
 	V10.affiche();
 	cout << endl << endl;
@@ -126,7 +126,7 @@ int main()
 		cout << "FALSE" << endl << endl;
 	}
 
-	Vecteur_2D<float> V5;
+	Vecteur_2D<int> V5;
 	V5 = V10 + V11;
 
 	cout << "Addition :" << endl;
@@ -137,7 +137,7 @@ int main()
 	cout << "Soustraction :" << endl;
 	cout << V5 << endl << endl;
 
-	V5 = V10 * 10.f;
+	V5 = V10 * 10;
 
 	cout << "Multiplication par un scalaire :" << endl;
 	cout << V5 << endl << endl;
@@ -148,20 +148,21 @@ int main()
 	V5 = V10 ^ V11;
 
 	cout << "Produit vectoriel :" << endl;
-	cout << V5 << endl << endl;*/
+	cout << V5 << endl << endl;
 
 
 
 
 	// Travail 3
+	cout << "Travail 3 :" << endl << endl;
 
 
-	Vecteur_3D<float> V01(1.14f, 2.3f, 3.f), V02(4.54f, 5.11f, 6.2f), V03(2.39f, 15.f, 7.3f);
+	Vecteur_3D<double> V01(1.14, 2.3, 3.0), V02(4.54, 5.11, 6.2), V03(2.39, 15.0, 7.3);
 
 	Vecteur_2D<float> V001(1.14f, 2.3f), V002(4.54f, 6.2f), V003(15.f, 7.3f);
 
 
-	Conteneur_Vecteur<Vecteur_3D<float>, 3> tab3D;
+	Conteneur_Vecteur<Vecteur_3D<double>, 3> tab3D;
 
 	tab3D[0] = V01;
 	tab3D[1] = V02;
