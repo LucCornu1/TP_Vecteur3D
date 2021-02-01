@@ -15,13 +15,13 @@ public:
 
 
 	// Fonctions membres
-	V operator[](const int i) const;
+	// V operator[](const int i) const;
 
 	V& operator[](const int i);
 
 
 	// Fonctions amies
-	friend ostream& operator<<(ostream& os, const Conteneur_Vecteur& tab)
+	friend ostream& operator<<(ostream& os, Conteneur_Vecteur& tab)
 	{
 		for (int i = 0; i < n; i++)
 		{
@@ -46,7 +46,7 @@ template <class V, int n> inline Conteneur_Vecteur<V, n>::~Conteneur_Vecteur()
 
 
 // Fonctions membres
-template <class V, int n> inline V Conteneur_Vecteur<V, n>::operator[](const int i) const
+/*template <class V, int n> inline V Conteneur_Vecteur<V, n>::operator[](const int i) const
 {
 	if ((i >= 0) && (i < n))
 	{
@@ -56,7 +56,7 @@ template <class V, int n> inline V Conteneur_Vecteur<V, n>::operator[](const int
 		cout << "Vous êtes hors du tableau" << endl;
 		return this->m_tab[0];
 	}
-}
+}*/
 
 template <class V, int n> inline V& Conteneur_Vecteur<V, n>::operator[](const int i)
 {
